@@ -1,0 +1,53 @@
+<div style="text-align:center">
+  <h1>
+    Welcome!
+  </h1>
+  <button (click)="getData()">Fetch Data</button>
+</div>
+<!--The code to display images -->
+<!--<div class="container">
+  <h1>Data appears Below</h1>
+  <table class="mat-elevation-z8">
+    <thead class="black white-text">
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+        </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let user of data">
+        <td>{{ user.Name }}</td>
+        <td>{{ user.Age }}</td>
+        <td>{{ user.Address }}</td>                
+      </tr>
+    </tbody>
+  </table>
+</div>-->
+<div>
+  <table mat-table [dataSource]="data" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Name }} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Age">
+        <th mat-header-cell *matHeaderCellDef> Age</th>
+        <td mat-cell *matCellDef="let element"> {{ element.Age }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Address }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></tr>
+  </table>
+</div>
